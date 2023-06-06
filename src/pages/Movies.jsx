@@ -46,8 +46,8 @@ const Movies = () => {
   return (
     <div className="p-5">
       {loading ? (
-        <div >
-         <ClimbingBoxLoader color="#36d7b7" />
+        <div className="flex justify-center h-screen items-center">
+          <ClimbingBoxLoader color="#36d7b7" />
         </div>
       ) : (
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
