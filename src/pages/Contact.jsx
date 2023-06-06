@@ -1,9 +1,19 @@
 import { useState } from "react";
 
 const Contact = () => {
+  
   const [inputValue, setInputValue] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const handleValueChange = (value) => setInputValue(value);
-  const Para = () => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+    if (inputValue.length == 0) {
+      return;
+    }
+  };
+  const ErrorPara = () => {
     return (
       <p className="text-red-500 text-xs italic">Please fill out this field.</p>
     );
@@ -12,7 +22,7 @@ const Contact = () => {
     <>
       <div className="flex justify-center items-center mt-20 max-w-6xl mx-auto">
         <div>
-          <form className="w-full max-w-lg">
+          <form className="w-full max-w-lg" onSubmit={handleSubmit}>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label
@@ -28,7 +38,7 @@ const Contact = () => {
                   placeholder="Jane"
                   onChange={(e) => handleValueChange(e.target.value)}
                 />
-                {inputValue.length > 0 ? null : <Para />}
+                {!inputValue && formSubmitted && <ErrorPara />}
               </div>
               <div className="w-full md:w-1/2 px-3">
                 <label
@@ -38,11 +48,13 @@ const Contact = () => {
                   Last Name
                 </label>
                 <input
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="appearance-none mb-3 block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id="grid-last-name"
                   type="text"
                   placeholder="Doe"
+                  onChange={(e) => handleValueChange(e.target.value)}
                 />
+                {/* {inputValue.length > 0 ? null : <ErrorPara />} */}
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -57,6 +69,7 @@ const Contact = () => {
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                   id="grid-password"
                   type="email"
+                  onChange={(e) => handleValueChange(e.target.value)}
                 />
                 <p className="text-gray-600 text-xs italic">
                   Some tips - as long as needed
@@ -76,6 +89,7 @@ const Contact = () => {
                   id="grid-city"
                   type="text"
                   placeholder="Albuquerque"
+                  onChange={(e) => handleValueChange(e.target.value)}
                 />
               </div>
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -89,6 +103,7 @@ const Contact = () => {
                   <select
                     className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-state"
+                    onChange={(e) => handleValueChange(e.target.value)}
                   >
                     <option>New Mexico</option>
                     <option>Missouri</option>
@@ -127,6 +142,14 @@ const Contact = () => {
                   placeholder="90210"
                 />
               </div>
+            </div>
+            <div className="text-center">
+              <button
+                className="bg-blue-500 mt-5  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                type="submit"
+              >
+                Submit
+              </button>
             </div>
           </form>
         </div>
