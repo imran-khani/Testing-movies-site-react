@@ -1,12 +1,19 @@
-import { Link, Outlet } from "react-router-dom";
+
+import { Fname } from "../App";
 
 const About = () => {
   return (
     <>
-      About
-      <Link to={"about1"}> About 1</Link>
-      <Link to={"about2"}> About 2</Link>
-      <Outlet />
+      
+      This is About Page <br />
+      <Fname.Consumer>
+        {
+          (fname) =>{
+            return <h1>My name is {fname}</h1>
+          }
+        }
+      </Fname.Consumer>
+      
     </>
   );
 };
