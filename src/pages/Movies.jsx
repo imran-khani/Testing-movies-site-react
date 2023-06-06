@@ -16,13 +16,6 @@ const Movies = () => {
         const jsonData = await response.json();
 
         setTotalResults(jsonData.totalResults);
-        // setData((prevData) => {
-        //   const newArray = [...prevData, ...jsonData.Search];
-        //   return Array.from(new Set(newArray.map((item) => item.imdbID))).map(
-        //     (id) => newArray.find((item) => item.imdbID === id)
-        //   );
-        // });
-
         setData((prevData) => {
           const newArray = [...prevData, ...jsonData.Search];
           const newData = Array.from(
