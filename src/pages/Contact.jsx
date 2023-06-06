@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 const Contact = () => {
-  
   const [inputValue, setInputValue] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const handleValueChange = (value) => setInputValue(value);
+  const handleValueChange = (value) => {
+    setInputValue(value);
+    inputValue.length === 0 && formSubmitted && setFormSubmitted(false); 
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +17,9 @@ const Contact = () => {
   };
   const ErrorPara = () => {
     return (
-      <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+      <p className="text-red-500 text-xs italic mb-2 mt-2">
+        Please fill out this field.
+      </p>
     );
   };
   return (
@@ -54,7 +58,7 @@ const Contact = () => {
                   placeholder="Doe"
                   onChange={(e) => handleValueChange(e.target.value)}
                 />
-                {/* {inputValue.length > 0 ? null : <ErrorPara />} */}
+                {!inputValue && formSubmitted && <ErrorPara />}
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -71,9 +75,7 @@ const Contact = () => {
                   type="email"
                   onChange={(e) => handleValueChange(e.target.value)}
                 />
-                <p className="text-gray-600 text-xs italic">
-                  Some tips - as long as needed
-                </p>
+                {!inputValue && formSubmitted && <ErrorPara />}
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-2">
@@ -91,6 +93,7 @@ const Contact = () => {
                   placeholder="Albuquerque"
                   onChange={(e) => handleValueChange(e.target.value)}
                 />
+                {!inputValue && formSubmitted && <ErrorPara />}
               </div>
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label
@@ -125,6 +128,7 @@ const Contact = () => {
                       />
                     </svg>
                   </div>
+                  {!inputValue && formSubmitted && <ErrorPara />}
                 </div>
               </div>
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -141,6 +145,7 @@ const Contact = () => {
                   type="text"
                   placeholder="90210"
                 />
+                 {!inputValue && formSubmitted && <ErrorPara />}
               </div>
             </div>
             <div className="text-center">
