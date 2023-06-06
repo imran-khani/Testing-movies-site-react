@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Suspense } from "react";
+import { ClimbingBoxLoader } from "react-spinners";
 
 const Movies = () => {
   const [data, setData] = useState([]);
@@ -45,8 +46,8 @@ const Movies = () => {
   return (
     <div className="p-5">
       {loading ? (
-        <div className="loader">
-          <h1>Loading...</h1>
+        <div >
+         <ClimbingBoxLoader color="#36d7b7" />
         </div>
       ) : (
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
