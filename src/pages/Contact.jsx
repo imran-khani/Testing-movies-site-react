@@ -1,8 +1,13 @@
 import { useState } from "react";
 
 const Contact = () => {
-  const [fname, setFname] = useState("");
-  const handleValueChange = (value) => setFname(value);
+  const [inputValue, setInputValue] = useState("");
+  const handleValueChange = (value) => setInputValue(value);
+  const Para = () => {
+    return (
+      <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+    );
+  };
   return (
     <>
       <div className="flex justify-center items-center mt-20 max-w-6xl mx-auto">
@@ -23,12 +28,7 @@ const Contact = () => {
                   placeholder="Jane"
                   onChange={(e) => handleValueChange(e.target.value)}
                 />
-
-                {fname.length > 0 ? null : (
-                  <p className="text-red-500 text-xs italic">
-                    Please fill out this field.
-                  </p>
-                )}
+                {inputValue.length > 0 ? null : <Para />}
               </div>
               <div className="w-full md:w-1/2 px-3">
                 <label
