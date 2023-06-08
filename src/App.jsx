@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { createContext } from "react";
 import "./App.css";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -6,14 +7,13 @@ import Navbar from "./pages/Navbar";
 import Contact from "./pages/Contact";
 import Error from "./pages/Error";
 import Movies from "./pages/Movies";
-import { createContext } from "react";
 
-const Fname = createContext();
+const Name = createContext();
 function App() {
   return (
     <>
       <Navbar />
-      <Fname.Provider value={"Rahul"}>
+      <Name.Provider value={"imran khan"}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -21,10 +21,11 @@ function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="*" element={<Error />} />
         </Routes>
-      </Fname.Provider>
+      </Name.Provider>
     </>
   );
 }
 
 export default App;
-export { Fname };
+
+export { Name };

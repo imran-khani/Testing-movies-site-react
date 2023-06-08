@@ -1,16 +1,14 @@
-import { Fname } from "../App";
-
+import React from "react";
+import { Name } from "../App";
 const About = () => {
   return (
-    <>
-      This is About Page <br />
-      {/* learning React context api here */}
-      <Fname.Consumer>
-        {(fname) => {
-          return <h1>My name is {fname}</h1>;
+    <div>
+      <Name.Consumer>
+        {(myName) => {
+          return <h1>my name is {myName}</h1>;
         }}
-      </Fname.Consumer>
-    </>
+      </Name.Consumer>
+    </div>
   );
 };
 
