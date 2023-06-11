@@ -7,6 +7,8 @@ import Navbar from "./pages/Navbar";
 import Contact from "./pages/Contact";
 import Error from "./pages/Error";
 import Movies from "./pages/Movies";
+import Context from "./Context";
+import Dashboard from "./Dashboard";
 
 const Name = createContext();
 function App() {
@@ -19,8 +21,10 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/movies" element={<Movies />} />
+          <Route path="/context" element={<Context />} />
           <Route path="*" element={<Error />} />
         </Routes>
+          <Dashboard />
       </Name.Provider>
     </>
   );

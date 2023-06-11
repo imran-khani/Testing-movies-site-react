@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Name } from "../App";
 const About = () => {
   return (

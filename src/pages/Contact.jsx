@@ -3,6 +3,9 @@ import { useState } from "react";
 const Contact = () => {
   const [inputValue, setInputValue] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
+  
+  
+  
   const handleValueChange = (value) => {
     setInputValue(value);
     inputValue.length === 0 && formSubmitted && setFormSubmitted(false); 
